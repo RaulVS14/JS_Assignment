@@ -11,7 +11,48 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <h1>JS Assigment</h1>
+</header>
+<main>
+    <section id="test-interface">
+        <form name="testForm">
+            <input id="test-word" type="text" name="word">
+            <select id="expected-result" name="expected">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            <button id="test-submit" type="button" onclick="addTest()">Test</button>
+        </form>
+    </section>
+    <section id="test-results">
+        <table id="test-table">
+            <tr>
+                <td>1</td>
+                <td>anna</td>
+                <td onload="elementLogger(this.parent)"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Anna</td>
+                <td onload="elementLogger(this.parent)"></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>anna</td>
+                <td onload="elementLogger(this.parent)"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>YellowSubmarine</td>
+                <td onload="elementLogger(this.parent)"></td>
+            </tr>
 
+        </table>
+    </section>
+</main>
 </body>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+        crossorigin="anonymous"></script>
 </html>
