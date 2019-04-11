@@ -24,7 +24,6 @@ function isPalindrome(word) {
     var checkedWord = word.toLowerCase().replace(/^\s+|\s+$/gm, '');
     var palindromeCheck = true;
     for (var i = 0, n = checkedWord.length - 1; i <= n; i++) {
-        console.log(checkedWord.charAt(i), checkedWord.charAt(n-i));
         if (checkedWord.charAt(i) !== checkedWord.charAt(n - i)) {
             palindromeCheck = false;
             break;
@@ -40,10 +39,8 @@ function createRow(object, tableBody) {
     sequence.innerText = (tableRowsCount + 1).toString() + ".";
     resultRow.appendChild(sequence);
     for (var key in object) {
-
         var tableColumn = document.createElement('td');
         if (key === 'expected') {
-            console.log(isPalindrome(object['word']), object['expected']);
             if (isPalindrome(object['word']) === object['expected']) {
                 tableColumn.style.backgroundColor = "green";
             } else {
@@ -98,7 +95,6 @@ function init(tableElemId, formId) {
                     form.reset();
                 });
                 form.addEventListener("submit", function (ev) {
-                    console.log(formExpected.value);
                     var formObject = {
                         "word": formWord.value,
                         "expected": formExpected.value
@@ -116,26 +112,6 @@ function init(tableElemId, formId) {
     if (window.console && msg) {
         console.log(msg);
     }
-}
-
-function ieTest() {
-    var text = "<pre>console.log(" + (isPalindrome("anna") === true) + "):<br>" +
-        "console.log(" + (isPalindrome("Anna") === true) + "):<br>" +
-        "console.log(" + (isPalindrome("anna ") === true) + "):<br>" +
-        "console.log(" + (isPalindrome("YellowSubmarine") === false) + "):<br></pre>";
-    document.write(text);
-}
-
-function testIsPalindrome(fn) {
-    console.log(fn("anna") === true);
-    console.log(fn("Anna") === true);
-    console.log(fn("anna ") === true);
-    console.log(fn("YellowSubmarine") === false);
-}
-if (window.console) {
-    testIsPalindrome(isPalindrome);
-} else {
-    ieTest()
 }
 
 var isIE = /*@cc_on!@*/!!document.documentMode;
