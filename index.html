@@ -5,54 +5,44 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="main.js"></script>
+    <title>Palindrome | JS Assignment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-    <h1>JS Assigment</h1>
+    <h1>JS Assigment - Palindrome</h1>
 </header>
 <main>
     <section id="test-interface">
-        <form name="testForm">
+        <form name="testForm" id="test-form">
             <input id="test-word" type="text" name="word">
             <select id="expected-result" name="expected">
                 <option value="true">True</option>
                 <option value="false">False</option>
             </select>
-            <button id="test-submit" type="button" onclick="addTest()">Test</button>
+            <button id="test-submit" type="button">Test</button>
         </form>
     </section>
     <section id="test-results">
         <table id="test-table">
+            <thead>
             <tr>
-                <td>1</td>
-                <td>anna</td>
-                <td onload="elementLogger(this.parent)"></td>
+                <td>Sequence</td>
+                <td>Input word</td>
+                <td>Expected === Actual</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Anna</td>
-                <td onload="elementLogger(this.parent)"></td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>anna</td>
-                <td onload="elementLogger(this.parent)"></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>YellowSubmarine</td>
-                <td onload="elementLogger(this.parent)"></td>
-            </tr>
-
+            </thead>
         </table>
     </section>
 </main>
-</body>
+
+<!-- [if gte IE 9]>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
         crossorigin="anonymous"></script>
+<![endif]-->
+<script src="main.js"></script>
+</body>
 </html>
