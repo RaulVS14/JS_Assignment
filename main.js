@@ -43,12 +43,13 @@ function createRow(object, tableBody) {
         if (key === 'expected') {
             if (isPalindrome(object['word']) === object['expected']) {
                 tableColumn.style.backgroundColor = "green";
+                tableColumn.style.color = "green";
             } else {
                 tableColumn.style.backgroundColor = "red";
+                tableColumn.style.color = "red";
             }
-        } else {
-            tableColumn.innerText = object["" + key + ""];
         }
+        tableColumn.innerText = object["" + key + ""];
         resultRow.appendChild(tableColumn);
     }
     return resultRow;
@@ -56,7 +57,9 @@ function createRow(object, tableBody) {
 
 function addTest(formObject, tableBody) {
     var newRow = createRow(formObject, tableBody);
+    newRow.scrollIntoView({behavior: "smooth", block: "end"});
     tableBody.appendChild(newRow);
+    return tableBody;
 }
 
 function init(tableElemId, formId) {
@@ -81,27 +84,24 @@ function init(tableElemId, formId) {
         if (!form) {
             msg = "Please specify correct id for the interface"
         } else {
-            var formWord = form.getElementsByTagName("input")[0];
-            var formExpected = form.getElementsByTagName("select")[0];
             var formSubmit = form.getElementsByTagName("button")[0];
-            if(form.addEventListener){
+            if (form.addEventListener) {
+
                 formSubmit.addEventListener("click", function (ev) {
-                    var booleanValue = (formExpected.value === "true");
-                    var formObject = {
-                        "word": formWord.value,
-                        "expected": booleanValue
-                    };
-                    addTest(formObject, tableElemBody);
-                    form.reset();
+                    submitForm(ev, form, tableElemBody);
                 });
+
                 form.addEventListener("submit", function (ev) {
-                    var formObject = {
-                        "word": formWord.value,
-                        "expected": formExpected.value
-                    };
-                    addTest(formObject, tableElemBody);
-                    form.reset();
-                    ev.preventDefault();
+                    submitForm(ev, form, tableElemBody);
+                });
+
+                document.addEventListener("open-interface", function () {
+                    showInterface(form);
+                });
+
+
+                document.addEventListener("close-interface", function () {
+                    hideInterface(form);
                 });
 
             } else if (form.attachEvent) {
@@ -128,4 +128,55 @@ if (!isIE) {
     window.onload = function (ev) {
         init("test-table", "test-form");
     }
+}
+
+function submitForm(ev, form, tableElemBody) {
+    if (form && tableElemBody) {
+        var formWord = form.getElementsByTagName("input")[0];
+        var formExpected = form.getElementsByTagName("select")[0];
+        var booleanValue = (formExpected.value === "true");
+        var formObject = {
+            "word": formWord.value,
+            "expected": booleanValue
+        };
+        if (formObject.word && formExpected.value) {
+            addTest(formObject, tableElemBody);
+            form.reset();
+            hideInterface(form);
+
+            ev.preventDefault();
+        } else {
+            alert("Please fill all fields");
+        }
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function hideInterface(form) {
+    var view_size = document.getElementsByTagName('body')[0].offsetWidth;
+    if (view_size <= 450) {
+        form.parentElement.classList.remove("open");
+        form.parentElement.classList.add("hidden");
+    }
+}
+
+function showInterface(form) {
+    var view_size = document.getElementsByTagName('body')[0].offsetWidth;
+    if (view_size <= 450) {
+        form.parentElement.classList.remove("hidden");
+        form.parentElement.classList.remove("mobile-hide");
+        form.parentElement.classList.add("open");
+    }
+}
+
+function openEvent() {
+    var event = new Event('open-interface');
+    document.dispatchEvent(event);
+}
+
+function closeEvent() {
+    var event = new Event('close-interface');
+    document.dispatchEvent(event);
 }

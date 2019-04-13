@@ -1,0 +1,234 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+* {
+    color: #343434;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif ;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    background-color: #343434;
+    color: yellow;
+}
+
+header h1 {
+    color: yellow;
+    font-size: 1.35em;
+}
+
+h2 {
+    font-size: 1.15em;
+
+}
+
+main {
+    width: 100%;
+    height: calc(100% - 64px);
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+main section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+*:focus {
+    outline: white;
+}
+
+@keyframes open {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes close {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+main #test-interface.open {
+    animation-name: open;
+    animation-duration: 0.5s;
+}
+
+main #test-interface.hidden {
+    animation-name: close;
+    animation-duration: 0.5s;
+}
+
+main #test-interface form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    flex-direction: column;
+}
+
+main #test-interface form label {
+    margin: 10px 0 5px 0;
+}
+
+main #test-interface form *:not(label) {
+    padding: 0 10px;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #343434;
+}
+
+
+main #test-interface form #test-submit {
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 0;
+    background-color: #343434;
+    color: yellow;
+    font-weight: bold;
+}
+
+main #test-results #open-interface, main #test-interface #close-interface {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    padding-top: 10px;
+    z-index: 1;
+    background-color: white;
+    border: 0;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+main #test-results {
+    height: calc(100% - 300px);
+    overflow: auto;
+    justify-content: flex-start;
+}
+
+
+main #test-results table {
+    width: 100%;
+}
+
+main #test-results tbody td {
+    padding: 5px 0;
+}
+
+main #test-results tbody tr td:last-child {
+    padding: 0;
+    border-bottom: 5px solid white;
+    border-top: 5px solid white;
+}
+
+/* ======== MEDIA QUERIES ======*/
+@media only screen and (min-width: 320px) {
+
+    main #test-interface {
+        position: absolute;
+        height: 100%;
+        align-content: flex-start;
+        left: 0;
+        background-color: white;
+        z-index: 2;
+    }
+
+    main #test-interface.mobile-hide {
+        left: -100%;
+    }
+
+    main #test-results #open-interface, main #test-interface #close-interface {
+        display: block;
+    }
+
+    main #test-interface h2 {
+        padding: 0 10px;
+    }
+
+    main #test-interface form {
+        padding: 0 10px;
+    }
+
+    main #test-results {
+        height: 100%;
+        overflow: auto;
+        justify-content: flex-start;
+    }
+
+    .hidden {
+        position: absolute;
+        left: -100% !important;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    main #test-interface {
+        height: 300px;
+        position: relative;
+        align-items: center;
+    }
+
+    main #test-interface.mobile-hide {
+        left: 0;
+    }
+
+    main #test-results #open-interface, main #test-interface #close-interface {
+        display: none;
+    }
+
+    h2 {
+        padding: 0;
+        font-size: 1.5em;
+    }
+
+    main #test-interface form {
+        width: 354px;
+        padding: 0;
+    }
+
+    main #test-results {
+        height: calc(100% - 300px);
+        overflow: auto;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    main #test-results table {
+        width: 80%;
+    }
+}
+
+@media print {
+    main #test-interface, main #test-results #open-interface {
+        display: none;
+    }
+    main #test-results #open-interface {
+
+    }
+
+    * {
+        color: black !important;
+    }
+}

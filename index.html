@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Palindrome | JS Assignment</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,35 +14,36 @@
     <h1>JS Assigment - Palindrome</h1>
 </header>
 <main>
-    <section id="test-interface">
+    <section id="test-interface" class="mobile-hide">
+        <button id="close-interface" onclick="closeEvent()">&lsaquo;</button>
+        <h2>Add new test</h2>
         <form name="testForm" id="test-form">
+            <label for="test-word">Test word</label>
             <input id="test-word" type="text" name="word">
+            <label for="expected-result">Expected result</label>
             <select id="expected-result" name="expected">
-                <option value="true">True</option>
                 <option value="false">False</option>
+                <option value="true">True</option>
             </select>
             <button id="test-submit" type="button">Test</button>
         </form>
     </section>
     <section id="test-results">
+        <button id="open-interface" onclick="openEvent()">&#43;</button>
+        <h2>Test Results</h2>
+
         <table id="test-table">
             <thead>
             <tr>
-                <td>Sequence</td>
-                <td>Input word</td>
-                <td>Expected === Actual</td>
+                <td>Nr</td>
+                <td>Word</td>
+                <td>Result</td>
             </tr>
             </thead>
         </table>
     </section>
 </main>
 
-<!-- [if gte IE 9]>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-        crossorigin="anonymous"></script>
-<![endif]-->
 <script src="main.js"></script>
 </body>
 </html>
