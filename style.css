@@ -220,6 +220,13 @@ main #test-results tbody tr td:last-child {
     }
 }
 
+
+@media only screen and (min-width: 956px) {
+    main #test-results table {
+        width: 748px;
+    }
+}
+
 @media print {
     main #test-interface, main #test-results #open-interface {
         display: none;
