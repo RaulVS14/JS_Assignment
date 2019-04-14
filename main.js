@@ -38,7 +38,6 @@ function isPalindrome(word) {
             break;
         }
     }
-    test_data
     return palindromeCheck;
 }
 
@@ -139,6 +138,7 @@ function init(tableElemId, formId) {
 
         // Get the form element
         var form = document.getElementById(formId);
+
         if (!form) {
 
             // Message to display if didn't find the form element
@@ -199,7 +199,7 @@ if (!isIE) {
 /**
  * submitForm(): function for initializing the table with test data and bind eventListeners
  * @param {object} ev - event object
- * @param {HTMLElement} form - form element that was submitted the request
+ * @param {HTMLFormElement} form - form element that was submitted the request
  * @param {HTMLTableElement} tableElemBody - target table body that will be used to display the submitted test
  */
 function submitForm(ev, form, tableElemBody) {
@@ -230,7 +230,7 @@ function submitForm(ev, form, tableElemBody) {
 
 /**
  * hideInterface(): function for hiding form interface
- * @param {HTMLFormElement} form - form element that is targeted
+ * @param {HTMLElement} form - form element that is targeted
  */
 function hideInterface(form) {
     var view_size = document.getElementsByTagName('body')[0].offsetWidth;
@@ -242,7 +242,7 @@ function hideInterface(form) {
 
 /**
  * showInterface(): function for displaying form interface
- * @param {HTMLFormElement} form - form element that is targeted
+ * @param {HTMLElement} form - form element that is targeted
  */
 function showInterface(form) {
     var view_size = document.getElementsByTagName('body')[0].offsetWidth;
