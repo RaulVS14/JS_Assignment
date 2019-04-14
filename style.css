@@ -1,3 +1,17 @@
+/*
+1. GENERAL
+2. INTERFACE
+2.1. INTERFACE - ANIMATION
+2.2. INTERFACE - LAYOUT
+3. RESULTS
+3.1. RESULTS - LAYOUT
+4. MEDIA QUERIES
+4.1 MEDIA QUERIES - MIN-WIDTH: 320px
+4.2 MEDIA QUERIES - MIN-WIDTH: 450px
+4.3 MEDIA QUERIES - MIN-WIDTH: 956px
+4.4 MEDIA QUERIES - PRINT
+*/
+/* ========= 1. GENERAL =================*/
 html, body {
     width: 100%;
     height: 100%;
@@ -28,7 +42,6 @@ header h1 {
 
 h2 {
     font-size: 1.15em;
-
 }
 
 main {
@@ -47,10 +60,13 @@ main section {
     justify-content: center;
 }
 
+/* ========= 2. INTERFACE ================= */
+
 *:focus {
     outline: white;
 }
 
+/* ========= 2.1 INTERFACE - ANIMATION ================ */
 @keyframes open {
     from {
         left: -100%;
@@ -79,6 +95,7 @@ main #test-interface.hidden {
     animation-duration: 0.5s;
 }
 
+/* ========= 2.2 INTERFACE - LAYOUT ================= */
 main #test-interface form {
     width: 100%;
     display: flex;
@@ -98,7 +115,6 @@ main #test-interface form *:not(label) {
     border: 1px solid #343434;
 }
 
-
 main #test-interface form #test-submit {
     margin-top: 10px;
     border-radius: 3px;
@@ -108,6 +124,9 @@ main #test-interface form #test-submit {
     font-weight: bold;
 }
 
+/* ========= 3. RESULTS ================= */
+
+/* ========= 3.1. RESULTS - LAYOUT ================= */
 main #test-results #open-interface, main #test-interface #close-interface {
     width: 45px;
     height: 45px;
@@ -124,28 +143,42 @@ main #test-results #open-interface, main #test-interface #close-interface {
 
 main #test-results {
     height: calc(100% - 300px);
-    overflow: auto;
+    overflow: hidden;
+    overflow-y: auto;
     justify-content: flex-start;
 }
 
-
-main #test-results table {
+main #test-results table, main #test-results tbody, main #test-results tr {
     width: 100%;
 }
-
 main #test-results tbody td {
     padding: 5px 0;
 }
+main #test-results tbody td:first-child {
+    width: 10%;
+}
+
+main #test-results tbody tr td:nth-child(2) {
+    max-width: 75%;
+}
 
 main #test-results tbody tr td:last-child {
+    width: 15%;
     padding: 0;
     border-bottom: 5px solid white;
     border-top: 5px solid white;
 }
 
-/* ======== MEDIA QUERIES ======*/
+main #test-results .print-only{
+    display: none;
+}
+
+/* ======== 4. MEDIA QUERIES ====== */
+
+/* ======== 4.1 MEDIA QUERIES - MIN-WIDTH: 320px ====== */
 @media only screen and (min-width: 320px) {
 
+    /* INTERFACE */
     main #test-interface {
         position: absolute;
         height: 100%;
@@ -159,16 +192,17 @@ main #test-results tbody tr td:last-child {
         left: -100%;
     }
 
-    main #test-results #open-interface, main #test-interface #close-interface {
-        display: block;
-    }
-
     main #test-interface h2 {
         padding: 0 10px;
     }
 
     main #test-interface form {
         padding: 0 10px;
+    }
+
+    /* RESULT */
+    main #test-results #open-interface, main #test-interface #close-interface {
+        display: block;
     }
 
     main #test-results {
@@ -183,7 +217,16 @@ main #test-results tbody tr td:last-child {
     }
 }
 
+/* ======== 4.2 MEDIA QUERIES - MIN-WIDTH: 450px ====== */
 @media only screen and (min-width: 450px) {
+
+    /* GENERAL */
+    h2 {
+        padding: 0;
+        font-size: 1.5em;
+    }
+
+    /* INTERFACE */
     main #test-interface {
         height: 300px;
         position: relative;
@@ -194,20 +237,16 @@ main #test-results tbody tr td:last-child {
         left: 0;
     }
 
-    main #test-results #open-interface, main #test-interface #close-interface {
-        display: none;
-    }
-
-    h2 {
-        padding: 0;
-        font-size: 1.5em;
-    }
-
     main #test-interface form {
         width: 354px;
         padding: 0;
     }
 
+    main #test-results #open-interface, main #test-interface #close-interface {
+        display: none;
+    }
+
+    /* RESULTS */
     main #test-results {
         height: calc(100% - 300px);
         overflow: auto;
@@ -220,22 +259,29 @@ main #test-results tbody tr td:last-child {
     }
 }
 
-
+/* ======== 4.3 MEDIA QUERIES - MIN-WIDTH: 956px ====== */
 @media only screen and (min-width: 956px) {
+
+    /* RESULTS */
     main #test-results table {
         width: 748px;
     }
 }
 
+/* ======== 4.4 MEDIA QUERIES - PRINT ====== */
 @media print {
+
+    /* GENERAL */
+    * {
+        color: black !important;
+    }
+
+    /* RESULTS */
     main #test-interface, main #test-results #open-interface {
         display: none;
     }
-    main #test-results #open-interface {
 
-    }
-
-    * {
-        color: black !important;
+    main #test-results .print-only {
+        display: inline-block;
     }
 }
